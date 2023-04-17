@@ -1,0 +1,315 @@
+:root   {
+    --mainColor: #0a3871;
+    --secondColor:#275082;
+    --thirdColor: #7da8dd;
+    --thirdAlphaColor: #7da8dd99;
+    --bgGradient: linear-gradient(315deg, #275082, #2dfdc3);
+    --bgColor: #f3f5fc;
+    --bgCardColor: #fff;
+    --bgCardAlphaColor: #fff9;
+    --textColor: #000;
+    --textAlphaColor: #0009;
+    --boxShadow: #0002;
+    --headerHeight: 60px;
+    --time: .5s;
+    --timeFast: .25s;
+    --timeSlow: 1s;
+    --blur: blur(5px);
+}
+
+/* ****** Reset ****** */
+html    {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 16px;
+    background-color: var(--bgColor);
+    color: var(--textAlphaColor);
+}
+*,*::after,*::before    {
+    box-sizing: inherit;
+}
+
+a   {
+    color: inherit;
+    text-decoration: none;
+}
+body    {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: var(--bgColor);
+}
+h1,h2,h3,p{ 
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+img {
+    max-width: 100%;
+}
+
+/* ****** Property Class****** */
+.btn    {
+    position: relative;
+    border-radius: 2rem;
+    padding: .7rem 0;
+    font-weight: bold;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: var(--thirdColor);
+    border: none;
+    color: var(--bgCardColor);
+    transition: var(--time) ease;
+    overflow: hidden;
+}
+.btn:disabled   {
+    opacity: .3;
+    cursor: no-drop;
+}
+.btn > span {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--bgCardAlphaColor);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: btn var(--time) ease;
+}
+@keyframes btn {
+    0%{
+        transform: translate(-50%, -50%) scale(0);
+    }
+    100%{
+        transform: translate(-50%, -50%) scale(30);
+        opacity: 0;
+    }
+}
+.btn-main   {
+    background-color: var(--mainColor);
+    color: var(--bgColor);
+}
+.cursor, a, button  {
+    cursor: default;
+}
+@media (hover: hover)   {
+    a, .cursor, button{
+        cursor: pointer;
+    }
+}
+.content    {
+    padding: 1rem;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.error  {
+    transform: scale(1.05);
+    color: red;
+}
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+.hidden-up  {
+    transform: translateY(-150%);
+    opacity: 0;
+    visibility: hidden;
+}
+.title  {
+    color: var(--textColor);
+}
+
+
+
+/* ****** Site Styles ****** */
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: var(--headerHeight);
+    padding-left: 1rem;
+    background-color: var(--bgColor);
+    z-index: 1000;
+}
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo   {
+    font-weight: bold;
+    color: var(--mainColor);
+}
+.nav-btn    {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2rem;
+    height: 1.5rem;
+}
+.line   {
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    background-color: var(--mainColor);
+    transition: var(--timeFast);
+
+}
+.nav-btn.active > .line1    {
+    transform: translateY(10px) rotate(-45deg);
+}
+.nav-btn.active > .line2    {
+    transform:rotate(45deg);
+}
+.nav-btn.active > .line3    {
+    transform: translateY(-10px) rotate(45deg);
+}
+nav {
+    position: absolute;
+    top: 3em;
+    right: 0;
+    width: calc(300px + 1em);
+    visibility: hidden;
+    margin-right: -1em;
+    opacity: 0;
+    transition: var(--time);
+}
+.nav-btn.active nav {
+    visibility: visible;
+    opacity: 1;
+}
+.nav    {
+    display: flex;
+    margin-left: 350px;
+    flex-direction: column;
+    width: 300px;
+    border-radius: 1rem;
+    box-shadow: 0 0 0.5rem var(--boxShadow);
+    background-color: var(--bgCardColor);
+    transition: var(--time);
+}
+.nav-btn.active .nav {
+    margin-left: 0px;
+}
+.nav-link   {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: normal;
+    transition: var(--timeFast);
+}
+.nav-link:hover {
+    color: var(--secondColor);
+}
+.nav-link ion-icon  {
+    font-size: 1.5rem;
+}
+.main   {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 3rem;
+    width: 100%;
+    min-height: calc(100vh - var(--headerHeight));
+}
+.in-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.input-text {
+    padding: .5rem;
+    width: 100%;
+    height: 100%;
+    max-height: 200px;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    text-transform: lowercase;
+    resize: none;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-radius: 1.5rem;
+    border: 2px solid var(--thirdAlphaColor);
+    color: var(--textColor);
+}
+.in-section-send    {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.section-send-details   {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding-left: .5rem;
+    transition: var(--time);
+}
+.in-section-send-btns   {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.in-section-send-btns > button  {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.out-section{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 1.5rem 1rem 1rem;
+    border-radius: 1.5rem;
+    background-color: var(--bgCardColor);
+    box-shadow: .2rem .2rem .5rem var(--boxShadow);
+    transition: var(--time);
+    overflow: hidden;
+}
+.out-section-vacio  {
+    display: grid;
+    gap: 2rem;
+    text-align: center;
+    visibility: visible;
+    opacity: 1;
+    transition: var(--timeSlow);
+}
+.out-section-vacio-img  {
+    display: none;
+}
+.out-section-full   {
+    display: grid;
+    gap: 1rem;
+    height: 100%;
+    width: 100%;
+    transition: var(--timeSlow);
+}
+.out-section-full.hidden-up {
+    transition: 0s;
+}
+.out-section-full p {
+    max-height: 200px;
+    word-break: break-all;
+    overflow: auto;
+}
+.out-section-full > button  {
+    align-self: end;
+}
+.btn-copy   {
+    transition: var(--timeFast);
+}
+.btn-copied {
+    animation: copied var(--timeFast) ease forwards;
+}
+
+.out-section-vacio-img{
+    display: block;
+    max-width: 300px;
+    justify-self: center;
+}
