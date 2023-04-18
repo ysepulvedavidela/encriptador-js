@@ -17,9 +17,7 @@
     --blur: blur(5px);
 }
 
-
-
-/* ****** Reset ****** */
+/* ***** Reset **** */
 html    {
     box-sizing: border-box;
     font-family: sans-serif;
@@ -54,9 +52,9 @@ img {
 }
 
 /* **** Property Class **** */
-.btn    {
+.btn  {
     position: relative;
-    border-radius: 2rem;
+    border-radius: 24px;
     padding: .7rem 0;
     font-weight: bold;
     font-family: inherit;
@@ -67,7 +65,7 @@ img {
     transition: var(--time) ease;
     overflow: hidden;
 }
-.btn:disabled   {
+.btn:disabled {
     opacity: .3;
     cursor: no-drop;
 }
@@ -143,7 +141,7 @@ img {
     justify-content: space-between;
     align-items: center;
 }
-.logo-min{
+.logo, .logo-min{
     font-weight: bold;
     color: var(--mainColor);
 }
@@ -254,12 +252,6 @@ nav {
     padding-left: .5rem;
     transition: var(--time);
 }
-.in-section-send-btns   {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    border: 1px solid red;
-}
 .in-section-send-btns > button  {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -310,6 +302,7 @@ nav {
 .btn-copied {
     animation: copied var(--timeFast) ease forwards;
 }
+
 @keyframes copied {
     0%{
 
@@ -326,22 +319,46 @@ nav {
     }
 }
 
-
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1440px) {
     nav {
         overflow: hidden;
     }
-}
-
-@media screen and (min-width: 0px) and (max-width: 768px) {
     .in-section-send-btns   {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
 }
 
+@media screen and (min-width: 441px) and (max-width: 768px) {
+    .logo{
+        display: none;
+    }
+    .in-section-send-btns   {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+    .encriptar-btn {
+        margin-right: 20px;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .logo{
+        display: none;
+    }
+    .in-section-send-btns   {
+        display: flex;
+        flex-direction: column;
+    }
+    .encriptar-btn {
+        margin-bottom: 20px;
+    }
+}
 
 @media screen and (min-width: 768px) {
+    .logo-min{
+        display:none;
+    }
     .main   {
         grid-template-columns: 3fr 2fr;
         grid-template-rows: none;
@@ -350,7 +367,7 @@ nav {
         padding-bottom: 1rem;
         justify-content: space-between;
     }
-    .out-section    {
+    .out-section {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -360,7 +377,7 @@ nav {
         max-height: none;
         border: none;
     }
-    .out-section-vacio-img  {
+    .out-section-vacio-img {
         display: block;
         max-width: 300px;
         justify-self: center;
@@ -369,7 +386,21 @@ nav {
         align-self: start;
         max-height: 300px;
     }
-    .out-section-full button    {
+    .out-section-full button {
         align-self: end;
     }
+    .in-section-send-btns   {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+    .encriptar-btn {
+        margin-right: 20px;
+    }
+}
+
+/* **** Style para dejar de mostrar imagen **** */
+.none{
+    display: none;
+    visibility: hidden;
+    opacity: 0;
 }

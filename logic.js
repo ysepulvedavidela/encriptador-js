@@ -35,12 +35,10 @@ $input.addEventListener('keyup',e=>{
     if(/^[a-z\s]+$/.test(text.trim())){
         $btnEnc.disabled = false;
         $btnDes.disabled = false;
-        $resetBtn.disabled = false
         d.getElementById('details').classList.remove('error')
     }else{
         $btnEnc.disabled = true;
         $btnDes.disabled = true;
-        $resetBtn.disabled = true
         d.getElementById('details').classList.add('error')
     }
     if(!text){
@@ -48,7 +46,7 @@ $input.addEventListener('keyup',e=>{
         apareceText(false)
     }
 
-    // **** Esto hace que al dar enter se encripte **** //
+    // **** Encriptar con boton ENTER **** //
     if(e.key == 'Enter'){
         $btnEnc.click()
     }
@@ -80,7 +78,7 @@ function desencriptar(text){
     return text;
 }
 
-// **** Cuando se apretan los botones de encri o desenc. cambia el frontend **** //
+// **** Cuando se apretan los botones de encriptación o desencriptación cambia el frontend **** //
 function apareceText(bool){
     if(bool){
         $vacioSec.classList.add('none')
@@ -92,9 +90,7 @@ function apareceText(bool){
     
 }
 
-
-
-// **** Asignacion de eventos a los botones **** //
+// **** Asignacion de eventos a los btns **** //
 d.addEventListener('click',e=>{
     if(e.target == $btnEnc){
         if(text){
@@ -121,15 +117,13 @@ d.addEventListener('click',e=>{
         }, 1500);
     }
 
-    // **** Esto sirve para el boton del inicio **** //
+    // **** Boton del inicio **** //
     if(e.target.matches('.nav-btn') || e.target.matches('.nav-btn > span')){
         d.getElementById('nav-btn').classList.toggle('active')
     }else{
         d.getElementById('nav-btn').classList.remove('active')
         
     }
-
-
 
     if(e.target.matches('.btn')){
         let x = e.x - e.target.offsetLeft
